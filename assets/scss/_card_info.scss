@@ -1,0 +1,137 @@
+.card {
+    // display: grid;
+    &_information { 
+        flex: 48% 0 0;
+        // height: rem(571);
+        padding: rem(12) rem(11);
+    }
+    &_header{
+        span {
+            color: $Primary-Orange;
+            font-size: rem(18);
+        }
+        h3 {
+            margin-block:rem(4) rem(19) ;
+            font-size: 3rem;
+        }
+    }
+    &_info {
+        margin-block:rem(33) ;
+        p {
+            color: $Neutral-Dark-grayish-blue;
+            font-size: rem(19);
+            padding-right: rem(92);
+            line-height: 1.7;
+        }
+    }
+    &_buys {
+    }
+    &_sallery {
+        @include flex(flex-start);
+        font-weight: bold;
+        margin-bottom: rem(44);
+        .buys_count {
+            position: relative;
+            font-size: 2.2rem;
+            &::before{
+                content: '$250.00';
+                position: absolute;
+                top: rem(45);
+                color: $Neutral-Grayish-blue;
+                font-size: 1.3rem;
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                height: 1px;
+                width: 64px;
+                top: rem(59);
+                left: rem(1);
+                background-color: $Neutral-Grayish-blue;
+            }
+        }
+        .number {
+            padding: rem(5) rem(8);
+            border-radius: rem(4);
+            color: $Primary-Orange;
+            background-color: $Primary-Pale-orange;
+        }
+    }
+    &_collect {
+        margin-block: rem(47) rem(32);
+        .card_control {
+            position: relative;
+            float: left;
+            width: 28%;
+            @include flex(space-around);
+            padding: rem(18) rem(7);
+            border-radius: rem(13);
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            background-color: $Neutral-Light-grayish-blue;
+            .value{}
+            svg{
+                cursor: pointer;
+                z-index: 112;
+
+                &.plus {
+                    
+                }
+                &.minus {
+                    transform: translatey(18%)
+                }
+            }
+            // .value {
+            //     flex: 40% 0 0
+            // }
+        }   
+    }
+    &_add {
+        @include flex();
+        cursor: pointer;
+        // position: relative;
+        left: 28px;
+        width: 52%;
+        padding: rem(22) rem(12);
+        border-radius: rem(10);
+        color: $Neutral-White;
+        background-color: $Primary-Orange;
+        box-shadow: 0 13px 18px 5px $Primary-Pale-orange;
+        svg,
+        span{
+            z-index: 11;
+        }
+        &:hover,
+        &.active {
+            filter: opacity(0.5);
+        }
+    }
+}
+
+@media screen and (max-width:540px) {
+    .card {
+        &_header{
+            h3 {
+                font-size: 2em;
+            }
+        }
+        &_info {
+            p {
+                padding-right: 0;
+                font-size: rem(17);
+            }
+        }
+        &_shop {
+            width: 80% !important;
+        }
+    }
+    .card_sallery .buys_count::before{
+        top: 0;
+        right: -12rem;
+    }
+    .card_sallery .buys_count::after {
+        top: 12px;
+        left: 15.0625rem;
+    }
+}

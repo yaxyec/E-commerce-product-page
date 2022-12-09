@@ -1,0 +1,88 @@
+.choose {
+    &_current {
+        flex: 43% 0 0;
+    }
+    &_image { 
+        margin-bottom: rem(20);
+        img {
+            height: 27rem;
+            width: 100%;
+            border-radius: rem(17);
+        }
+        .img_control {
+            display: none;
+            span {
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                background-color: hsl(0deg, 0%, 100%);
+                line-height: 3.5;
+                border-radius: 100%;
+            }
+        }
+    }
+    &_list {
+        ul {
+            @include flex();
+            // @include grid-column(85);
+            width: 100%;
+            li {
+                cursor: pointer;
+                position: relative;
+
+                // a{
+                //     position: relative;
+                //     width: 100%;
+                //     height: 100%;
+                    &::before {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: rem(1);
+                        background-color:hsl(0deg 0% 100% / 58%);
+                        box-sizing: border-box;
+                        z-index: 10000000;
+                    }
+                    &:hover{
+                        &::before {
+                            content:'';
+                        }
+                    }
+                    &.active {
+                            &::before {
+                                content: '';
+                                height: 98%;
+                                border: 2.3px solid $Primary-Orange;
+                                border-radius: rem(10);
+                            }
+                        }
+                // }
+
+                img{
+                    position: relative;
+                    width: 100%;
+                    border-radius: rem(10);
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:540px) {
+        .choose_current{
+            .img_control {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                @include flex(space-between);
+                padding-inline: 20px;
+                svg{
+                }
+            }
+            .choose_image {
+                width: 100%;
+            }
+            .choose_list {
+                display: none;
+            }
+        }
+    }
